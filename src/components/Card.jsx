@@ -1,17 +1,17 @@
 import React from "react";
 
-const Card = ({pImg,pPrice,pTitle,pDrawerItems,pSetDrawerItems}) => {
+const Card = ({pImg,pPrice,pTitle,pDrawerItems,setDrawerItems}) => {
 
     const [itemsCount, setItemsCount] = React.useState(0)
 
     function onAddToCart(){
-        pSetDrawerItems([...pDrawerItems, {pImg, pPrice, pTitle}])
+        setDrawerItems([...pDrawerItems, {pImg, pPrice, pTitle}])
         setItemsCount(itemsCount + 1) 
     }
 
     function deleteItems(){
         setItemsCount(0)
-        pSetDrawerItems(pDrawerItems.filter((obj) => pTitle !== obj.pTitle))
+        setDrawerItems(pDrawerItems.filter((obj) => pTitle !== obj.pTitle))
     }
 
     return(

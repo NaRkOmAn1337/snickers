@@ -5,9 +5,9 @@ import React from "react";
 
 function App() {
 
+  const [orderItems, setOrderItems] = React.useState([])
   const [isVisible, setIsVisible] = React.useState(false)
-
-  const [drawerItems, SetDrawerItems] = React.useState([])
+  const [drawerItems, setDrawerItems] = React.useState([])
 
   const sneakersArr = [
     {
@@ -58,7 +58,7 @@ function App() {
         </li>
       </ul>
     </header>
-    <Drawer drawerItems={drawerItems} isVisible={isVisible} setIsVisible={setIsVisible} />
+    <Drawer setDrawerItems={setDrawerItems} orderItems={orderItems} setOrderItems={setOrderItems} drawerItems={drawerItems} isVisible={isVisible} setIsVisible={setIsVisible} />
     <div className="content">
           <h1>Все кроссовки</h1>
           <div className="search-block">
@@ -67,7 +67,7 @@ function App() {
           </div>
         
     <div className="ds-f">
-         {sneakersArr.map((elem, index) => <Card pSetDrawerItems={SetDrawerItems} pDrawerItems = {drawerItems} pTitle={elem.title} pPrice={elem.price} pImg={elem.imageUrl} key={index}/>)}
+         {sneakersArr.map((elem, index) => <Card setDrawerItems={setDrawerItems} pDrawerItems = {drawerItems} pTitle={elem.title} pPrice={elem.price} pImg={elem.imageUrl} key={index}/>)}
     </div>
 
     </div>
