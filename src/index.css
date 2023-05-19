@@ -226,6 +226,10 @@ li {
   margin-bottom: 40px !important;
 }
 
+.cursor{
+  cursor: pointer;
+}
+
 .cartTotalBlock ul li{
   display: flex;
   align-items: flex-end;
