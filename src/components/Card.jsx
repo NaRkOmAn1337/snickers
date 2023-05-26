@@ -1,16 +1,21 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux"
 
 const Card = ({imgUrl,price,title,drawerItems,setDrawerItems}) => {
+    const dispatch = useDispatch()
+    const cash = useSelector(state => state.cash)
 
     const [itemsCount, setItemsCount] = React.useState(0)
 
     function onAddToCart(){
         setDrawerItems([...drawerItems, {imgUrl, price, title}])
+        dispatch({type: "ADD_CASH", payload: price})
         setItemsCount(itemsCount + 1) 
     }
 
     function deleteItems(){
         setItemsCount(0)
+        dispatch({type: "DEL_CASH"})
         setDrawerItems(drawerItems.filter((obj) => title !== obj.title))
     }
 
