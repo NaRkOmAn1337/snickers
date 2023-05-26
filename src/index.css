@@ -49,6 +49,10 @@ header div:first-child{
   display:flex;
   align-items: center;
 }
+.link{
+  color: black;
+  text-decoration-line: none;
+}
 /*------------------*/
 
 

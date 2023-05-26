@@ -2,19 +2,19 @@
 import React from "react"
 
 
-function Drawer (props){
+function Drawer ({drawerItems,setDrawerItems,orderItems, setOrderItems, isVisible,setIsVisible}){
     const [isOrdered, setIsOrdered] = React.useState(false)
 
     function makeOrder(drawerItems){
-        props.setOrderItems([...props.orderItems, drawerItems])
-        props.setDrawerItems([])
+        setOrderItems([...orderItems, drawerItems])
+        setDrawerItems([])
         setIsOrdered(!isOrdered)
     }
     return(
-        <div style = {props.isVisible ? {display: "block"} : {display: "none"}}  className="overlay">
+        <div style = {isVisible ? {display: "block"} : {display: "none"}}  className="overlay">
         <div className="drawer">
           <h2>
-            Корзина <img onClick={() => props.setIsVisible(!props.isVisible)} className="cu-p" src="./img/btn-remove.png" alt="Remove" />
+            Корзина <img onClick={() => setIsVisible(!isVisible)} className="cu-p" src="./img/btn-remove.png" alt="Remove" />
           </h2>
 
           {isOrdered && <div
@@ -26,16 +26,16 @@ function Drawer (props){
     
           <div className="items">           
               {
-                props.drawerItems.map((obj, index) =>
+                drawerItems.map((obj, index) =>
                 <div key = {index} className="cartItem">
                 <div
-                  style={{ backgroundImage: `url(${obj.pImg})` }}
+                  style={{ backgroundImage: `url(${obj.imgUrl})` }}
                   className="cartItemImg">
                 </div>
     
                 <div className="cartText">
-                <p>{obj.pTitle}</p>
-                <b>{obj.pPrice}</b>
+                <p>{obj.title}</p>
+                <b>{obj.price}</b>
                 </div>
                <img className="removeBtn" src="/img/btn-remove.png" alt="Remove" />
                </div>
@@ -57,7 +57,7 @@ function Drawer (props){
                 <b>1074 руб. </b>
               </li>
             </ul>
-            <button className="greenButton" onClick={() => makeOrder(props.drawerItems)}>
+            <button className="greenButton" onClick={() => makeOrder(drawerItems)}>
               Оформить заказ <img src="/img/arrow.png" alt="Arrow" />
             </button>
           </div>

@@ -1,9 +1,17 @@
-import Card from "./components/Card.jsx";
-import Drawer from "./components/Drawer.jsx";
 import React from "react";
+import { Routes, Route, Link } from 'react-router-dom'
+
+import Home from "./pages/Home.jsx"
+import Orders from "./pages/Orders.jsx"
+import Form from "./pages/Form.jsx"
+
 
 
 function App() {
+
+  React.useEffect (() => {
+    console.log(111)
+  }, [])
 
   const [orderItems, setOrderItems] = React.useState([])
   const [isVisible, setIsVisible] = React.useState(false)
@@ -35,43 +43,19 @@ function App() {
 
 
   return (
-    <div className="wrapper">
-    <header>
-      <div>
-        <img width={40} height={40} src="/img/logo.png" />
-        <div>
-          <h3>React Sneakers</h3>
-          <p>Магазин лучших кроссовок</p>
-        </div>
+      <div className="wrapper">
+          <Routes>
+            <Route path="/" element={<Home orderItems={orderItems} 
+            setOrderItems={setOrderItems} setIsVisible={setIsVisible} 
+            isVisible={isVisible} drawerItems={drawerItems} 
+            setDrawerItems={setDrawerItems} sneakersArr={sneakersArr} />}>
+            </Route>
+            <Route path="/orders" element={<Orders orderItems={orderItems} setOrderItems={setOrderItems} setIsVisible={setIsVisible} 
+            isVisible={isVisible} drawerItems={drawerItems} />}>
+              </Route>
+              <Route path="/form" element={<Form />} />
+          </Routes>
       </div>
-      <ul>
-        <li className="cursor" onClick={() => setIsVisible(!isVisible)}>
-          <img width={18} height={18} src="/img/cart.png" />
-          <span>1205 руб.</span>
-        </li>
-        <li>
-          <img width={18} height={18} src="/img/fav.png" />
-        </li>
-
-        <li>
-          <img width={18} height={18} src="/img/user.png" />
-        </li>
-      </ul>
-    </header>
-    <Drawer setDrawerItems={setDrawerItems} orderItems={orderItems} setOrderItems={setOrderItems} drawerItems={drawerItems} isVisible={isVisible} setIsVisible={setIsVisible} />
-    <div className="content">
-          <h1>Все кроссовки</h1>
-          <div className="search-block">
-              <img src="/img/search.png" width={18} height={18} alt="Search" />
-              <input placeholder="Поиск..." />
-          </div>
-        
-    <div className="ds-f">
-         {sneakersArr.map((elem, index) => <Card setDrawerItems={setDrawerItems} pDrawerItems = {drawerItems} pTitle={elem.title} pPrice={elem.price} pImg={elem.imageUrl} key={index}/>)}
-    </div>
-
-    </div>
-  </div>
   );
 }
 
