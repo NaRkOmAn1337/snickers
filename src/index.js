@@ -8,7 +8,8 @@ import { Provider } from 'react-redux';
 
 
 const defaultState = {
-    cash: 0
+    cash: 0,
+    inputValue: ""
 }
 
 const reducer = (state = defaultState, action) => {
@@ -17,6 +18,10 @@ const reducer = (state = defaultState, action) => {
             return{...state, cash: state.cash + action.payload}
         case "DEL_CASH":
             return{...state, cash: 0}
+        case "CHANGE_INPUT":
+            return{...state, inputValue: state.inputValue = (action.payload)}
+        case "CLEAR-INPUT":
+            return{...state, inputValue: ""}
         default:
             return state
     }

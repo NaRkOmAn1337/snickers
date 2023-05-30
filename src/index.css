@@ -67,6 +67,7 @@ header div:first-child{
     margin-bottom: 40px;
 }
 
+
 /*-----------------*/
 
 
@@ -161,7 +162,6 @@ li {
 
 
 
-
 .search-block {
   border: 1px solid #f3f3f3;
   border-radius: 10px;
@@ -180,12 +180,20 @@ li {
   outline:none;
 }
 
-.search-block img{
+.search-img{
   width: 18px;
   height: 18px;
   position: absolute;
   top:30%;
   left:3px;
+}
+
+.cross-img{
+  position: absolute;
+  right: 7px;
+  top: 7px;
+  opacity: 0.7;
+  cursor: pointer;
 }
 
 
@@ -334,4 +342,8 @@ li {
 
 .cartText p{
   margin-bottom: 5px;
+}
+
+.display-none{
+  display: none;
 }

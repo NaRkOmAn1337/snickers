@@ -12,7 +12,6 @@ import { Link } from "react-router-dom"
 
     const cash = useSelector(state => state.cash)
 
-    console.log(cash)
 
     return(
         <header>

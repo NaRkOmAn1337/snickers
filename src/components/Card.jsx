@@ -32,8 +32,8 @@ const Card = ({imgUrl,price,title,drawerItems,setDrawerItems}) => {
                 <b>{price}</b>
             </div>
             <div>
-              <img className="button" onClick={() => onAddToCart()} width={32} height={32} src={itemsCount !==0 ? "/img/btn-checked.svg" : "/img/plus.png"} alt="Plus" />
-              <img className="button" onClick={() => deleteItems()} width={32} height={32} src={"/img/delete.png"} alt="Del" />
+              <img className="button" onClick={() => onAddToCart()} width={32} height={32} src={itemsCount !== 0 ? "/img/btn-checked.svg" : "/img/plus.png"} alt="Plus" />
+              <img className={itemsCount ==0 ? "display-none" : "button"} onClick={() => deleteItems()} width={32} height={32} src={"/img/delete.png"} alt="Del" />
             </div>
         </div>
             <p>Количество товара:{itemsCount}</p>
