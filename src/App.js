@@ -4,18 +4,16 @@ import { Routes, Route, Link } from 'react-router-dom'
 import Home from "./pages/Home.jsx"
 import Orders from "./pages/Orders.jsx"
 import Form from "./pages/Form.jsx"
-
+import NotFound from "./pages/NotFound.jsx"
+import Favorite from "./pages/Favorite.jsx";
 
 
 function App() {
 
-  React.useEffect (() => {
-    console.log(111)
-  }, [])
-
   const [orderItems, setOrderItems] = React.useState([])
   const [isVisible, setIsVisible] = React.useState(false)
   const [drawerItems, setDrawerItems] = React.useState([])
+  
 
   const sneakersArr = [
     {
@@ -53,7 +51,15 @@ function App() {
             <Route path="/orders" element={<Orders orderItems={orderItems} setOrderItems={setOrderItems} setIsVisible={setIsVisible} 
             isVisible={isVisible} drawerItems={drawerItems} />}>
               </Route>
-              <Route path="/form" element={<Form />} />
+            <Route path="/form" element={<Form />} />
+            <Route
+              path="*" 
+              element={<NotFound />}
+            ></Route>
+            <Route
+              path="/favorite"
+              element={<Favorite />}
+              ></Route>
           </Routes>
       </div>
   );

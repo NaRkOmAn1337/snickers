@@ -29,9 +29,11 @@ import { Link } from "react-router-dom"
                 <img width={18} height={18} src="/img/cart.png" />
                 <span>{cash}</span>
                 </li>
-                <li>
-                <img width={18} height={18} src="/img/fav.png" />
+            <Link to="/favorite">  
+                <li className="cursor">
+                <img width={18} height={18} src="/img/fav.png"/>
                 </li>
+            </Link>    
             <Link to="/orders">
                 <li>
                 <img width={18} height={18} src="/img/user.png" />
