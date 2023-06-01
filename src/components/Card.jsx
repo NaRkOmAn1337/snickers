@@ -6,11 +6,21 @@ const Card = ({imgUrl,price,title,drawerItems,setDrawerItems}) => {
     const dispatch = useDispatch()
     const cash = useSelector(state => state.cash)
     const [itemsCount, setItemsCount] = React.useState(0)
+    const [isFavorite, setFavorite] = React.useState([])
 
-    const isFavorites = useSelector(state => state.isFavorites)
-    const onAddFavorite = () => {       
-        dispatch({type: "FAVORITE", payload: {title, price, imgUrl}})
+    const favorite = useSelector(state => state.favorite)
+    const onClickFavorite = () => {
+            dispatch ({type: "FAVORITE", payload: {imgUrl,price,title}})
+            setFavorite(!isFavorite)
+            console.log(favorite)
+            console.log(isFavorite)
+        
+        
     }
+        
+    
+        
+    
 
     function onAddToCart(){
         setDrawerItems([...drawerItems, {imgUrl, price, title}])
@@ -26,8 +36,8 @@ const Card = ({imgUrl,price,title,drawerItems,setDrawerItems}) => {
 
     return(
         <div className="card">
-        <div onClick={() => onAddFavorite()}>
-            <img src={isFavorites ? '/img/liked.png' : '/img/unliked.png'} width={28} height={28} alt="Unliked" />
+        <div onClick={() => onClickFavorite()}>
+            <img src={isFavorite ? '/img/unliked.png' : '/img/liked.png'} width={28} height={28} alt="Unliked" />
         </div>
         <img width={133} height={112} src={imgUrl} alt="Sneakers" />
         <h5>{title}</h5>

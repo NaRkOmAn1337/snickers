@@ -1,4 +1,5 @@
 import React from "react";
+import axios from 'axios';
 import { Routes, Route, Link } from 'react-router-dom'
 
 import Home from "./pages/Home.jsx"
@@ -13,6 +14,7 @@ function App() {
   const [orderItems, setOrderItems] = React.useState([])
   const [isVisible, setIsVisible] = React.useState(false)
   const [drawerItems, setDrawerItems] = React.useState([])
+  const [favorites, setFavorites] = React.useState([]);
   
 
   const sneakersArr = [
@@ -37,7 +39,6 @@ function App() {
       imageUrl: './img/sneakers/4.png',
     },
   ];
-  
 
 
   return (
@@ -58,7 +59,7 @@ function App() {
             ></Route>
             <Route
               path="/favorite"
-              element={<Favorite />}
+              element={<Favorite favorites={favorites} setFavorites={setFavorites} />}
               ></Route>
           </Routes>
       </div>
